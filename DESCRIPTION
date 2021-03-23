@@ -22,3 +22,5 @@ Config/reticulate:
       list(package = "math")
     )
   )
+URL: https://github.com/emphazis-org/emphaziscv
+BugReports: https://github.com/emphazis-org/emphaziscv/issues
