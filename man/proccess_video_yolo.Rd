@@ -4,7 +4,7 @@
 \alias{proccess_video_yolo}
 \title{YOLO back-end for emphazis}
 \usage{
-proccess_video_yolo(video_path, subject_model, fps)
+proccess_video_yolo(video_path, subject_model, fps, envir = parent.frame())
 }
 \arguments{
 \item{video_path}{Path to video file.}
@@ -12,6 +12,8 @@ proccess_video_yolo(video_path, subject_model, fps)
 \item{subject_model}{Path to model file of folder.}
 
 \item{fps}{FPS value.}
+
+\item{envir}{Environment for progress bar.}
 }
 \description{
 YOLO back-end for \code{emphazis} tracking functionality.

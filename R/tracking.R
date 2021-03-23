@@ -5,10 +5,16 @@
 #' @param video_path Path to video file.
 #' @param subject_model Path to model file of folder.
 #' @param fps FPS value.
+#' @param envir Environment for progress bar.
 #'
 #' @export
-proccess_video_yolo <- function(video_path, subject_model, fps) {
-
+proccess_video_yolo <- function(video_path, subject_model, fps,
+                                envir = parent.frame()) {
+  # Progress bar count
+  prog_count <- progressr::progressor(
+    along = c(1,2,3,4),
+    envir = envir
+  )
   reticulate::source_python(
     file = fs::path_package("emphaziscv", "python", "kalmanFilter.py")
   )
@@ -21,11 +27,13 @@ proccess_video_yolo <- function(video_path, subject_model, fps) {
   reticulate::source_python(
     file = fs::path_package("emphaziscv", "python", "tracking.py")
   )
+  prog_count()
 
   max_fish <- 1
 
   result <- reticulate::py$tracking(video_path, max_fish)
 
+  prog_count()
 
   result
 
@@ -50,6 +58,7 @@ proccess_video_yolo <- function(video_path, subject_model, fps) {
     y_center = y[,fish_number],
     # speed = vel[,fish_number]
   )
+  prog_count()
 
   video_info <- av::av_video_info(video_path)
 
@@ -58,6 +67,8 @@ proccess_video_yolo <- function(video_path, subject_model, fps) {
   base::attr(x = position_table, "arena_width") <- video_info$video$width
   base::attr(x = position_table, "arena_height") <- video_info$video$height
   base::attr(x = position_table, "fps") <- fps_video
+
+  prog_count()
 
   return(position_table)
 }

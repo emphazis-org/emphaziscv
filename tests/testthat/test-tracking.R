@@ -4,11 +4,14 @@ testthat::test_that("yolov4 3s", {
   # subject_num <- 1
 
   tictoc::tic("start 3s video")
-  position_table <- proccess_video_yolo(
-    video_path = video_path,
-    subject_model = NULL,
-    fps = NULL
-  )
+
+  progressr::with_progress({
+    position_table <- proccess_video_yolo(
+      video_path = video_path,
+      subject_model = NULL,
+      fps = NULL
+    )
+  })
   tictoc::toc()
 
 
