@@ -1,0 +1,5 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^model-data$
+^model_data$

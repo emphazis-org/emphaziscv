@@ -1,0 +1,24 @@
+Package: emphaziscv
+Title: Computer vision backends for emphazis tracking
+Version: 0.0.0.9000
+Author: emphaziscv authors
+Maintainer: Lucio Rezende Queiroz <luciorqueiroz@gmail.com>
+Description: Computer vision backends for emphazis tracking using tensorflow 
+    and YOLO.
+License:
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+SystemRequirements: python
+Config/reticulate:
+  list(
+    packages = list(
+      list(package = "numpy"),
+      list(package = "yolov4"),
+      list(package = "cv2"),
+      list(package = "scipy"),
+      list(package = "collections"),
+      list(package = "math")
+    )
+  )
