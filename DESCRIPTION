@@ -1,6 +1,6 @@
 Package: emphaziscv
 Title: Computer vision backends for emphazis tracking
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Author: emphaziscv authors
 Maintainer: Lucio Rezende Queiroz <luciorqueiroz@gmail.com>
 Description: Computer vision backends for emphazis tracking using tensorflow 

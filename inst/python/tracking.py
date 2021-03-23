@@ -22,7 +22,7 @@ def create_model(obj_name="model_data/obj.names",parse_cfg="model_data/yolov4-ti
     yolo.load_weights(load_weights, weights_type="yolo")
     return yolo
 
-def tracking(video_name,max_fish, fps):
+def tracking(video_name,max_fish):
     max_fish = int(max_fish)
     tracker = Tracker(300, 30, max_fish)
     yolo = create_model()

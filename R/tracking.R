@@ -24,7 +24,7 @@ proccess_video_yolo <- function(video_path, subject_model, fps) {
 
   max_fish <- 1
 
-  result <- reticulate::py$tracking(video_path, max_fish, fps)
+  result <- reticulate::py$tracking(video_path, max_fish)
 
 
   result
@@ -50,6 +50,14 @@ proccess_video_yolo <- function(video_path, subject_model, fps) {
     y_center = y[,fish_number],
     # speed = vel[,fish_number]
   )
+
+  video_info <- av::av_video_info(video_path)
+
+  fps_video <- round(video_info$video$frames/video_info$duration, 0)
+
+  base::attr(x = position_table, "arena_width") <- video_info$video$width
+  base::attr(x = position_table, "arena_height") <- video_info$video$height
+  base::attr(x = position_table, "fps") <- fps_video
 
   return(position_table)
 }

@@ -155,7 +155,6 @@ class Tracker(object):
 					track.trace.append(track.correction)
 					self.trackId +=1
 					self.tracks.append(track)
-	
 
 		for i in range(len(assignment)):
 			if(assignment[i] != -1):
